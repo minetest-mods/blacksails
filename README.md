@@ -1,7 +1,31 @@
 # blacksails
-by KzoneDD: https://forum.minetest.net/memberlist.php?mode=viewprofile&u=11435
-Cannons, Joly Roger, and more to come
 
-original forum post: https://forum.minetest.net/viewtopic.php?f=9&t=14170
+This Luanti/Minetest mod provides:
 
-adopted by TumeniNodes
+* Cannons
+* Gunpowder
+* Cannon balls
+* Smoke and noise
+* Joly Roger (pirate flag)
+
+![firing](screenshot/cannon_firing.jpg)
+
+**Read the [tutorial](how_to.txt)!**
+
+
+## License
+
+See [LICENSE.txt](LICENSE.txt) for details.
+
+* Code: LGPL 2.1+
+* Media: CC-BY-SA 3.0 (unified)
+
+
+## References
+* [Luanti Forums post](https://forum.luanti.org/viewtopic.php?t=14170)
+
+
+## Credits
+
+* Originally written by KzoneDD
+* Adopted by TumeniNodes and minetest-mods

@@ -1,0 +1,48 @@
+License for Code (LGPL 2.1+)
+============================
+
+Copyright (C) 2010-2016 David Dylan <nobeard@xs4all.nl>
+
+This program is free software; you can redistribute it and/or modify
+it under the terms of the GNU Lesser General Public License as published by
+the Free Software Foundation; either version 2.1 of the License, or
+(at your option) any later version.
+
+This program is distributed in the hope that it will be useful,
+but WITHOUT ANY WARRANTY; without even the implied warranty of
+MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+GNU Lesser General Public License for more details.
+
+You should have received a copy of the GNU Lesser General Public License along
+with this program; if not, write to the Free Software Foundation, Inc.,
+51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA.
+
+
+License for Textures
+====================
+Vanessa Ezekowitz <vanessaezekowitz@gmail.com> (C) 2013, (CC-BY-SA 3.0)
+	Imported from moretrees, https://github.com/mt-mods/moretrees/
+		moretrees_*.png
+
+Sanchez (WTFPL):
+	Imported from blox, https://forum.luanti.org/viewtopic.php?t=1960
+		blox_*.png
+
+paramat (CC BY-SA 3.0):
+	Imported from default, https://github.com/luanti-org/minetest_game/tree/master/mods/default
+		default_*wood.png
+
+KzoneDD
+	Derived from default and moretrees (CC BY-SA 3.0)
+		gun_hatch_*.png
+
+Textures not listed above: by KzoneDD (CC BY-SA 3.0)
+
+
+License for Sounds
+==================
+Opening-Sound created by CGEffex (CC BY 3.0), modified by BlockMen
+	doors_door_open.ogg
+
+Closing-Sound created by bennstir (CC BY 3.0)
+	doors_door_close.ogg
