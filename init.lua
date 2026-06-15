@@ -1,9 +1,6 @@
 -- Startup stuff. Probably best not to change this. But hey, I'm not your dad. --
 
 blacksails = {}
-t = {}
-local dam = 0
-math.randomseed(os.time())
 
 local modpath = minetest.get_modpath("blacksails")
 

@@ -9,13 +9,13 @@ minetest.register_node("blacksails:flag1", {
 		"pirate-flag_face.png",
 		"pirate-flag_face.png"
 	},
-	groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2,flammable=3},	
+	groups = {snappy=1,choppy=2,oddly_breakable_by_hand=2,flammable=3},
 	drawtype = "nodebox",
 	paramtype = "light",
 	description = "The Jolly Roger",
 	walkable = false,
 	paramtype2 = "facedir",
-	light_source = 8,	
+	light_source = 8,
 	node_box = {
 		type = "fixed",
 		fixed = {

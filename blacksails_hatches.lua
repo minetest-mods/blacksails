@@ -27,7 +27,7 @@ function blacksails.register_hatch_apple(name, def)
 	def.tile_front = "moretrees_apple_tree_wood.png"
 	def.tile_side = "gun_hatch_apple_wood.png"
 	def.tile_top = "gun_hatch_top_apple_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -107,7 +107,7 @@ function blacksails.register_hatch_beech(name, def)
 	def.tile_front = "moretrees_beech_wood.png"
 	def.tile_side = "gun_hatch_beech_wood.png"
 	def.tile_top = "gun_hatch_top_beech_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -187,7 +187,7 @@ function blacksails.register_hatch_birch(name, def)
 	def.tile_front = "moretrees_birch_wood.png"
 	def.tile_side = "gun_hatch_birch_wood.png"
 	def.tile_top = "gun_hatch_top_birch_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -267,7 +267,7 @@ function blacksails.register_hatch_fir(name, def)
 	def.tile_front = "moretrees_fir_wood.png"
 	def.tile_side = "gun_hatch_fir_wood.png"
 	def.tile_top = "gun_hatch_top_fir_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -347,7 +347,7 @@ function blacksails.register_hatch_oak(name, def)
 	def.tile_front = "moretrees_oak_wood.png"
 	def.tile_side = "gun_hatch_oak_wood.png"
 	def.tile_top = "gun_hatch_top_oak_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -427,7 +427,7 @@ function blacksails.register_hatch_palm(name, def)
 	def.tile_front = "moretrees_palm_wood.png"
 	def.tile_side = "gun_hatch_palm_wood.png"
 	def.tile_top = "gun_hatch_top_palm_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -507,7 +507,7 @@ function blacksails.register_hatch_rubber(name, def)
 	def.tile_front = "moretrees_rubber_tree_wood.png"
 	def.tile_side = "gun_hatch_rubber_wood.png"
 	def.tile_top = "gun_hatch_top_rubber_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -587,7 +587,7 @@ function blacksails.register_hatch_sequoia(name, def)
 	def.tile_front = "moretrees_sequoia_wood.png"
 	def.tile_side = "gun_hatch_sequoia_wood.png"
 	def.tile_top = "gun_hatch_top_sequoia_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -667,7 +667,7 @@ function blacksails.register_hatch_spruce(name, def)
 	def.tile_front = "moretrees_spruce_wood.png"
 	def.tile_side = "gun_hatch_spruce_wood.png"
 	def.tile_top = "gun_hatch_top_spruce_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -747,7 +747,7 @@ function blacksails.register_hatch_willow(name, def)
 	def.tile_front = "moretrees_willow_wood.png"
 	def.tile_side = "gun_hatch_willow_wood.png"
 	def.tile_top = "gun_hatch_top_willow_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -827,7 +827,7 @@ function blacksails.register_hatch_pine(name, def)
 	def.tile_front = "default_pine_wood.png"
 	def.tile_side = "gun_hatch_pine.png"
 	def.tile_top = "gun_hatch_pine_top.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -907,7 +907,7 @@ function blacksails.register_hatch_wood(name, def)
 	def.tile_front = "default_wood.png"
 	def.tile_side = "gun_hatch_wood.png"
 	def.tile_top = "gun_hatch_wood_top.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -987,7 +987,7 @@ function blacksails.register_hatch_jungle(name, def)
 	def.tile_front = "default_junglewood.png"
 	def.tile_side = "gun_hatch_jungle.png"
 	def.tile_top = "gun_hatch_jungle_top.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -1067,7 +1067,7 @@ function blacksails.register_hatch_acacia(name, def)
 	def.tile_front = "default_acacia_wood.png"
 	def.tile_side = "gun_hatch_acacia.png"
 	def.tile_top = "gun_hatch_acacia_top.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -1145,7 +1145,7 @@ function blacksails.register_hatch_blue_wood(name, def)
 	def.tile_front = "blox_bluewood.png"
 	def.tile_side = "gun_hatch_blue_wood.png"
 	def.tile_top = "gun_hatch_top_blue_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -1223,7 +1223,7 @@ function blacksails.register_hatch_cyan_wood(name, def)
 	def.tile_front = "blox_cyanwood.png"
 	def.tile_side = "gun_hatch_cyan_wood.png"
 	def.tile_top = "gun_hatch_top_cyan_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -1301,7 +1301,7 @@ function blacksails.register_hatch_green_wood(name, def)
 	def.tile_front = "blox_greenwood.png"
 	def.tile_side = "gun_hatch_green_wood.png"
 	def.tile_top = "gun_hatch_top_green_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -1379,7 +1379,7 @@ function blacksails.register_hatch_orange_wood(name, def)
 	def.tile_front = "blox_orangewood.png"
 	def.tile_side = "gun_hatch_orange_wood.png"
 	def.tile_top = "gun_hatch_top_orange_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -1457,7 +1457,7 @@ function blacksails.register_hatch_pink_wood(name, def)
 	def.tile_front = "blox_pinkwood.png"
 	def.tile_side = "gun_hatch_pink_wood.png"
 	def.tile_top = "gun_hatch_top_pink_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -1535,7 +1535,7 @@ function blacksails.register_hatch_purple_wood(name, def)
 	def.tile_front = "blox_purplewood.png"
 	def.tile_side = "gun_hatch_purple_wood.png"
 	def.tile_top = "gun_hatch_top_purple_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -1613,7 +1613,7 @@ function blacksails.register_hatch_red_wood(name, def)
 	def.tile_front = "blox_redwood.png"
 	def.tile_side = "gun_hatch_red_wood.png"
 	def.tile_top = "gun_hatch_top_red_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -1691,7 +1691,7 @@ function blacksails.register_hatch_white_wood(name, def)
 	def.tile_front = "blox_whitewood.png"
 	def.tile_side = "gun_hatch_white_wood.png"
 	def.tile_top = "gun_hatch_top_white_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -1769,7 +1769,7 @@ function blacksails.register_hatch_yellow_wood(name, def)
 	def.tile_front = "blox_yellowwood.png"
 	def.tile_side = "gun_hatch_yellow_wood.png"
 	def.tile_top = "gun_hatch_top_yellow_wood.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 
@@ -1847,7 +1847,7 @@ function blacksails.register_hatch_black_wood(name, def)
 	def.tile_front = "blox_blackwood.png"
 	def.tile_side = "gun_hatch_black_wood.png"
 	def.tile_top = "gun_hatch_black_wood_top.png"
-	
+
 	local def_opened = table.copy(def)
 	local def_closed = table.copy(def)
 

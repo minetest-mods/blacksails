@@ -25,16 +25,17 @@ local crater_hole = cannon_destroy_radius
 
 
 -- functions
+local t = {} -- TODO: insert into recursive 'crater' function
 
 local function crater(crater_hole, fd, pp)
 --
-cw3 = 0
+local cw3 = 0
 
 while (cw3 <= crater_hole) do
 
 if fd == 1 or fd == 3 then
 	pp.x = pp.x + 1
-elseif fd == 0 or fd == 2 then 
+elseif fd == 0 or fd == 2 then
 	pp.z = pp.z + 1
 end
 
@@ -53,7 +54,7 @@ end
 						u.z = (pp.z - cw2)  + cw
 						c.z = (pp.z + cw2)  - cw
 						k.z = (pp.z - cw2)  + cw
-					elseif fd == 0 or fd == 2 then 
+					elseif fd == 0 or fd == 2 then
 						f.x = (pp.x + cw2)  - cw
 						u.x = (pp.x - cw2)  + cw
 						c.x = (pp.x + cw2)  - cw
@@ -68,17 +69,17 @@ end
 					cw = cw + 1
 				end
 						f.y = pp.y + cw2
-						u.y = pp.y + cw2				
+						u.y = pp.y + cw2
 						c.y = pp.y - cw2
 						k.y = pp.y - cw2
 					cw2 = cw2 + 1
-		end		
+		end
 	--
 	cw3 = cw3 + 1
 	end
 --
 
-	for m,e in ipairs(t) do 
+	for m,e in ipairs(t) do
 		local current_node = minetest.deserialize(e)
 
 --
@@ -89,8 +90,8 @@ end
 		local t_cracky = minetest.get_item_group(current_node_get.name, "cracky")
 		local t_choppy = minetest.get_item_group(current_node_get.name, "choppy")
 
-		local dam = (math.random(30) + (cannon_destroy_probability * 10)) 
-	
+		local dam = (math.random(30) + (cannon_destroy_probability * 10))
+
 	if t_snappy >= 1 or t_oddly_breakable_by_hand >= 1 then
 	dam = 100 --always breaks
 	end
@@ -106,7 +107,7 @@ end
 	if t_choppy >= 1 then
 	dam = (dam * t_choppy)
 	end
-	
+
 	if dam <= 80 then
 		-- do nothing for now
 	elseif dam > 80 and dam < 90 then
@@ -126,10 +127,10 @@ end
 			if not minetest.is_protected(current_node, "") or current_node_get.name ~= "blacksails:cannon_bottom" or current_node_get.name ~= "blacksails:cannon_top" then
 		minetest.remove_node(current_node)
 			end
-	end	
+	end
 		t = {}
 	end
-	
+
 --
 end
 
@@ -152,7 +153,7 @@ local function effects(fd2)
 			maxsize = 16,
 			texture = "tnt_smoke.png",
 			})
-		
+
 			minetest.after(1, function()
 			local posmax = {x=fd2.x+5, y=fd2.y+5, z=fd2.z+5}
 			minetest.add_particlespawner({
@@ -183,7 +184,7 @@ local function damage(i, fd, fd2, sd, pp, cannon_gravity_effect, cannon_punch_co
 				elseif fd == 3 then
 					fd2.x = fd2.x-2
 				end
-			
+
 		minetest.after(0.1, function()
 			minetest.set_node(fd2, {name="fire:basic_flame"})
 			while (i <= sd) do
@@ -196,33 +197,33 @@ local function damage(i, fd, fd2, sd, pp, cannon_gravity_effect, cannon_punch_co
 				elseif fd == 3 then
 					pp.x = pp.x-1
 				end
-				
+
 				-- gravity effect --
 			if (cannon_gravity_effect >= (cannon_shoot_distance / 3)) then
 				pp.y = pp.y - 1
 				cannon_gravity_effect = 0
 			end
-				
+
 	if (i > 1) then
 
 		local pp_name = minetest.get_node(pp).name
-		if not minetest.is_protected(pp_name, "") then			
-		
+		if not minetest.is_protected(pp_name, "") then
+
 			if pp_name == "ignore" or pp_name == "air" or pp_name == "default:water" or pp_name == "default:lava" then
 					-- Do nothing for now
 			else
 				minetest.remove_node(pp)
 				cannon_punch_count = cannon_punch_count + 1
-				if cannon_punch_count >= cannon_max_punch_count then 
-					break 
+				if cannon_punch_count >= cannon_max_punch_count then
+					break
 				end
 			end
-		end	
+		end
 	end
 	cannon_gravity_effect = cannon_gravity_effect + 1
 	i = i + 1
 			end
-	
+
 
 	if i >= sd or cannon_punch_count >= cannon_max_punch_count then
 		i = 0
@@ -230,11 +231,10 @@ local function damage(i, fd, fd2, sd, pp, cannon_gravity_effect, cannon_punch_co
 		crater(crater_hole, fd, pp)
 	end
 		end)
-		
+
 		--reset
 		minetest.after(0.2, function()
 			minetest.set_node(fd2, {name="air"})
-			local i = 0
 		end)
 
 end
@@ -249,16 +249,15 @@ local fd2 = {x=pos.x, y=pos.y, z=pos.z}
 
 local i = 0
 local pp = {x=pos.x, y=pos.y, z=pos.z}
-local pf = {x=pos.x, y=pos.y, z=pos.z}	
 
 local player = puncher:get_player_name()
-			
+
 -- Loading the cannon --
 if puncher:get_wielded_item():get_name() == "tnt:gunpowder" and node.name == "blacksails:cannon_bottom" then
 		if cannon_weaponized == true then
 			if meta:get_int("powder") ~= 1 then
 			puncher:get_inventory():remove_item("main", "tnt:gunpowder 1")
-			meta:set_int("powder", 1)		
+			meta:set_int("powder", 1)
 
 			minetest.chat_send_player(player, "Powder loaded into cannon.")
 			else
@@ -275,13 +274,13 @@ if puncher:get_wielded_item():get_name() == "blacksails:cannonball_single" and n
 			puncher:get_inventory():remove_item("main", "blacksails:cannonball_single 1")
 			meta:set_int("projectile", 1)
 
-			minetest.chat_send_player(player, "Cannonball loaded into cannon.")		
+			minetest.chat_send_player(player, "Cannonball loaded into cannon.")
 			else
 			minetest.chat_send_player(player, "Cannonball already loaded into cannon.")
-			end			
+			end
 		elseif cannon_weaponized == true and cannon_does_damage == false then
-			minetest.chat_send_player(player, "Cannons don't do damage, no use loading a cannonball.")	
-		else 
+			minetest.chat_send_player(player, "Cannons don't do damage, no use loading a cannonball.")
+		else
 			minetest.chat_send_player(player, "Cannons don't work. The server-owner turned them off.")
 		end
 end
@@ -300,7 +299,7 @@ if puncher:get_wielded_item():get_name() == "default:stick" and node.name == "bl
 	end
 	if meta:get_int("powder") == 1 then
 		minetest.add_item(pos2, "tnt:gunpowder")
-		meta:set_int("powder", 0)	
+		meta:set_int("powder", 0)
 			if meta:get_int("projectile") == 0 then
 			minetest.chat_send_player(player, "Cannon has been rendered safe.")
 			end
@@ -311,23 +310,23 @@ if puncher:get_wielded_item():get_name() == "default:stick" and node.name == "bl
 end
 
 -- shooting the cannon --
-	if puncher:get_wielded_item():get_name() == "default:torch" and node.name == "blacksails:cannon_bottom" then 
+	if puncher:get_wielded_item():get_name() == "default:torch" and node.name == "blacksails:cannon_bottom" then
 
 		if cannon_weaponized == false then 		-- Aw, poor player, cannon no boom... Give them something...
-			minetest.chat_send_player(player, "Kaboooom.")		
+			minetest.chat_send_player(player, "Kaboooom.")
 		elseif cannon_weaponized == true and cannon_does_damage == false then -- Fireworks
 			if meta:get_int("powder") == 0 then
 				minetest.chat_send_player(player, "You need to load powder (Punch cannon with tnt:gunpowder).")
 			else
 				effects(fd2)
-					meta:set_int("powder", 0)				
+					meta:set_int("powder", 0)
 			end
 		elseif cannon_weaponized == true and cannon_does_damage == true then -- Fireworks & damage
 			if meta:get_int("powder") == 0 then
-				minetest.chat_send_player(player, "You need to load powder (Punch cannon with tnt:gunpowder).")			
+				minetest.chat_send_player(player, "You need to load powder (Punch cannon with tnt:gunpowder).")
 			end
 			if meta:get_int("powder") == 0 and meta:get_int("projectile") == 0 then
-				minetest.chat_send_player(player, "Punch cannon with powder and cannonball to load.")			
+				minetest.chat_send_player(player, "Punch cannon with powder and cannonball to load.")
 			elseif meta:get_int("powder") == 1 and meta:get_int("projectile") == 0 then
 				minetest.chat_send_player(player, "If you don't load a cannonball, you do no damage. (Punch cannon with blacksails:cannonball).")
 				effects(fd2)
@@ -341,7 +340,7 @@ end
 		end
 	end
 end)
-	
+
 --- Cannon ---
 
 minetest.register_node("blacksails:cannon_top", {
@@ -373,7 +372,7 @@ minetest.register_node("blacksails:cannon_top", {
 			type = "fixed",
 			fixed = {-0.5, -0.5, -0.5, 0.5, 0.5, 0.5},
 		},
-		
+
 		on_dig = function(pos, node, player)
 			minetest.remove_node(pos)
 			local pt = pos
@@ -381,22 +380,21 @@ minetest.register_node("blacksails:cannon_top", {
 			pt2.z = pt2.z-1
 			minetest.node_dig(pt2, node, player)
 		end,
-	
+
 	})
-	
+
 minetest.register_node("blacksails:cannon_bottom", {
 		description = "Blacksails mod Cannon",
-		inventory_image = "gun-2-top.png",
 
 		--- Placement: two nodes, one correctly fitting the other (chamber & barrel) ---
-		
+
 		on_place = function(itemstack, placer, pointed_thing)
 
 		--- Variables, coordinates, positioning, facing(xyz) ---
 		local 	p2 = minetest.dir_to_facedir(placer:get_look_dir())
 		local 	pt = pointed_thing.above
 		local 	pt2 = {x=pt.x, y=pt.y, z=pt.z}
-				
+
 			if p2 == 0 then
 				pt2.z = pt2.z+1
 			elseif p2 == 1 then
@@ -406,10 +404,10 @@ minetest.register_node("blacksails:cannon_bottom", {
 			elseif p2 == 3 then
 				pt2.x = pt2.x-1
 			end
-		
+
 			--- Trapping placement no-can-do's ---
-		
-			if not pointed_thing.type == "node" then
+
+			if pointed_thing.type ~= "node" then
 				return itemstack
 			end
 
@@ -443,23 +441,23 @@ minetest.register_node("blacksails:cannon_bottom", {
 			return itemstack
 		end,
 		--- removing the cannon ---
-		
+
 		on_dig = function(pos, node, player, pointed_thing)
-		
+
 				local meta = minetest.get_meta(pos)
 				local HereIsMyBarrel = minetest.deserialize(meta:get_string("WhereIsMyBarrel"))
-			
+
 				minetest.node_dig(pos, node, player)
 				minetest.remove_node(HereIsMyBarrel)
 		end,
 
-		on_destruct = function(pos) 
+		on_destruct = function(pos)
 				local meta = minetest.get_meta(pos)
 				local HereIsMyBarrel = minetest.deserialize(meta:get_string("WhereIsMyBarrel"))
 
 				minetest.remove_node(HereIsMyBarrel)
 		end,
-		
+
 		---
 		on_rotate = screwdriver.disallow,
 		wield_image = "cannon_inventory.png",
@@ -511,7 +509,7 @@ minetest.register_tool("blacksails:cannonball_single", {
         }
     }
 })
-	
+
 --- Cannon casting mold ---
 
 minetest.register_craftitem("blacksails:cannon_mold", {
@@ -528,7 +526,7 @@ minetest.register_craft({
 })
 
 --- The cannon ---
-	
+
 	minetest.register_craft({
 	output = 'blacksails:cannon_bottom',
 	recipe = {
@@ -539,7 +537,7 @@ minetest.register_craft({
 })
 
 --- The cannonball ---
-	
+
 	minetest.register_craft({
 	output = 'blacksails:cannonball_single',
 	recipe = {
