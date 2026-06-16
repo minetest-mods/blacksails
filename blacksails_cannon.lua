@@ -377,11 +377,17 @@ minetest.register_node("blacksails:cannon_top", {
 		minetest.remove_node(pos)
 		local pt = pos
 		local pt2 = {x=pt.x, y=pt.y, z=pt.z}
+		-- TODO: This calculation is incomplete, see blacksails:cannon_bottom `on_place`.
 		pt2.z = pt2.z-1
 		minetest.node_dig(pt2, node, player)
 	end,
 
 })
+
+local function may_build_to(npos)
+	local def = core.registered_nodes[core.get_node(npos).name]
+	return def and def.buildable_to
+end
 
 minetest.register_node("blacksails:cannon_bottom", {
 	description = "Blacksails mod Cannon",
@@ -390,48 +396,48 @@ minetest.register_node("blacksails:cannon_bottom", {
 
 	on_place = function(itemstack, placer, pointed_thing)
 
-		--- Variables, coordinates, positioning, facing(xyz) ---
-		local p2 = minetest.dir_to_facedir(placer:get_look_dir())
-		local pt = pointed_thing.above
-		local pt2 = {x=pt.x, y=pt.y, z=pt.z}
-
-		if p2 == 0 then
-			pt2.z = pt2.z+1
-		elseif p2 == 1 then
-			pt2.x = pt2.x+1
-		elseif p2 == 2 then
-			pt2.z = pt2.z-1
-		elseif p2 == 3 then
-			pt2.x = pt2.x-1
-		end
-
-		--- Trapping placement no-can-do's ---
-
 		if pointed_thing.type ~= "node" then
 			return itemstack
 		end
 
+		--- Variables, coordinates, positioning, facing(xyz) ---
+		local param2_dir = minetest.dir_to_facedir(placer:get_look_dir())
+		local pos_above = pointed_thing.above
+		local pos_top = vector.new(pos_above)
+
+		if param2_dir == 0 then
+			pos_top.z = pos_top.z + 1
+		elseif param2_dir == 1 then
+			pos_top.x = pos_top.x + 1
+		elseif param2_dir == 2 then
+			pos_top.z = pos_top.z - 1
+		elseif param2_dir == 3 then
+			pos_top.x = pos_top.x - 1
+		end
+
+		--- Trapping placement no-can-do's ---
+
 		if
-			not minetest.registered_nodes[minetest.get_node(pt).name].buildable_to or
-			not minetest.registered_nodes[minetest.get_node(pt2).name].buildable_to or
+			not may_build_to(pos_above) or
+			not may_build_to(pos_top) or
 			not placer or
 			not placer:is_player()
 		then
 			return itemstack
 		end
 
-		if minetest.is_protected(pt, placer:get_player_name()) or
-			minetest.is_protected(pt2, placer:get_player_name()) then
-			minetest.record_protection_violation(pt, placer:get_player_name())
+		if minetest.is_protected(pos_above, placer:get_player_name()) or
+				minetest.is_protected(pos_top, placer:get_player_name()) then
+			minetest.record_protection_violation(pos_above, placer:get_player_name())
 			return itemstack
 		end
 
 
 		--- Placing the nodes ---
-		minetest.set_node(pt, {name="blacksails:cannon_bottom", param2=p2})
-		minetest.set_node(pt2, {name="blacksails:cannon_top", param2=p2})
-		local meta = minetest.get_meta(pt)
-		meta:set_string("WhereIsMyBarrel", minetest.serialize(pt2))
+		minetest.set_node(pos_above, {name="blacksails:cannon_bottom", param2=param2_dir})
+		minetest.set_node(pos_top, {name="blacksails:cannon_top", param2=param2_dir})
+		local meta = minetest.get_meta(pos_above)
+		meta:set_string("WhereIsMyBarrel", minetest.serialize(pos_top))
 		meta:set_int("projectile", 0)
 		meta:set_int("powder", 0)
 		--- In this world, you get nothing for free (unless in creative) ---
